@@ -1,4 +1,3 @@
-
 # react-native-startio-ads
 
 This library was created to enable the use of the advertising SDK provided by Start.io.
@@ -73,7 +72,7 @@ export default Home;
 
 ### Usage with Interstitial Ad
 ```javascript
-import React from 'react';
+import React, {useEffect} from 'react';
 import RNStartIoAds, {Types} from 'react-native-startio-ads';
 
 const Home = () => {
@@ -102,7 +101,7 @@ export default Home;
 
 ### The Interstitial Ad can be loaded for viewing at a later time.
 ```javascript
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import RNStartIoAds, {Types} from 'react-native-startio-ads';
 
@@ -142,8 +141,9 @@ const Home = () => {
 		}}>
 			<Text>Click to view the interstitial ad</Text>
 		</TouchableOpacity>
-	) 
+	)
 }
 
 export default Home;
 ```
+
