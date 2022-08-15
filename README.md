@@ -5,13 +5,13 @@ All development was based on official Start.io [documentation](https://support.s
 
 * **At the moment, this lib only work for Android.**
 
-* **At the moment, this lib only provide the Banner Ad and Interstitial Ad.**
-
-* **At the moment, this lib yet don't support the Rewards Ads.**
+* **At the moment, this lib only provide the Banner Ad and Interstitial Ad, don't support Rewards Ads yet.**
 
 * **The initial SDK parameter that initializes a Splash Ad has not been changed. Therefore, by default, when opening the app, this initial advertisement will be displayed. In a future moment we should add a control via RN to start or not this Splash Ad.**
 
 ## Getting started
+
+`$ yarn add react-native-startio-ads`
 
 `$ npm install react-native-startio-ads --save`
 
