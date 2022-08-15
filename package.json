@@ -2,7 +2,7 @@
 {
   "name": "react-native-startio-ads",
   "version": "1.0.0",
-  "description": "",
+  "description": "Library to support the integration of the Start.io ad SDK in react native apps.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,21 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "author": {
+    "email": "devdaniellima@gmail.com",
+    "name": "Daniel Lima Oliveira"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/devdaniellima/react-native-startio-ads/issues"
+  },
+  "homepage": "https://github.com/devdaniellima/react-native-startio-ads#readme",
   "peerDependencies": {
     "react-native": "^0.41.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devdaniellima/react-native-startio-ads.git"
   }
 }
