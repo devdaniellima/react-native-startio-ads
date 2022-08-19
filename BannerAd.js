@@ -1,18 +1,33 @@
+import styles from 'components/ContainerGeneral/styles';
 import React from 'react'
 
 import { View, requireNativeComponent } from 'react-native';
 
-const BannerAd = () => {
-    return (
-        <View style={{width: '100%', height: 100}}>
-            <RNRnStartIoBanner style={{width: '100%', height: '100%'}}/>
-        </View>
-    )
+const BannerAd = (props) => {
+  const { 
+    style,
+    onReceiveAd = () => {},
+    onFailedToReceiveAd = () => {},
+    onImpression = () => {},
+    onClick = () => {},
+    hideBanner = false
+  } = props
+  
+  return (
+    <RnStartIoBannerXml 
+      style={{width: '100%', height: 50, ...styles}}
+      onReceiveAd={onReceiveAd}
+      onFailedToReceiveAd={onFailedToReceiveAd}
+      onImpression={onImpression}
+      onClick={onClick}
+      hideBanner={hideBanner}
+    />
+  )
 }
 
-const RNRnStartIoBanner = requireNativeComponent(
-    'RNRnStartIoBanner',
-    BannerAd,
+const RnStartIoBannerXml = requireNativeComponent(
+  'RnStartIoBannerXml',
+  BannerAd,
 );
 
 export default BannerAd
