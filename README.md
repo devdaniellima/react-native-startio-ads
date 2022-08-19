@@ -29,7 +29,7 @@ All development was based on official Start.io [documentation](https://support.s
     ```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
     ```
-      compile project(':react-native-startio-ads')
+	compile project(':react-native-startio-ads')
     ```
 
 ## Pre-requisites
@@ -45,8 +45,8 @@ First, initiate the RNStartIoAds in App.js (or other first class). Replace "star
 import RNStartIoAds from 'react-native-startio-ads';
 
 RNStartIoAds.initialize({
-	appId: 'startappAppId',
-  	// testAds: true, # initializes the library in test mode.
+  appId: 'startappAppId',
+  // testAds: true, # initializes the library in test mode.
 });
 ```
 
@@ -56,14 +56,14 @@ import React from 'react';
 import {BannerAd} from 'react-native-startio-ads';
 
 const Home = () => {
-  	return (
-    	<BannerAd
-    		onReceiveAd={() => {}}
-      		onFailedToReceiveAd={() => {}}
-      		onImpression={() => {}}
-			onClick={() => {}}
-		/>
-  	)
+  return (
+    <BannerAd
+	  onReceiveAd={() => {}}
+      onFailedToReceiveAd={() => {}}
+      onImpression={() => {}}
+      onClick={() => {}}
+	/>
+  )
 }
 
 export default Home;
@@ -75,26 +75,25 @@ import React, {useEffect} from 'react';
 import RNStartIoAds, {Types} from 'react-native-startio-ads';
 
 const Home = () => {
-
-	const loadAndShowInterstitial = async () => {
-		await RNStartIoAds.loadInterstitial(
-			// Types.INTERSTITIAL_AUTOMATIC (default) | Types.INTERSTITIAL_VIDEO | Types.INTERSTITIAL_OFFERWALL
-		)
-			.then(result => {
-				if (result === Types.INTERSTITIAL_LOAD_SUCCESS) {
-					RNStartIoAds.showInterstitial();
-				}
-			})
-			.catch(error => {
-				console.log(error);
-			});
-	}
+  const loadAndShowInterstitial = async () => {
+    await RNStartIoAds.loadInterstitial(
+      // Types.INTERSTITIAL_AUTOMATIC (default) | Types.INTERSTITIAL_VIDEO | Types.INTERSTITIAL_OFFERWALL
+    )
+    .then(result => {
+      if (result === Types.INTERSTITIAL_LOAD_SUCCESS) {
+        RNStartIoAds.showInterstitial();
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
 	
-	useEffect(() => {
-		loadAndShowInterstitial();
-	}, []);
+  useEffect(() => {
+    loadAndShowInterstitial();
+  }, []);
 
-	return <></>
+  return <></>
 }
 
 export default Home;
@@ -107,42 +106,41 @@ import {TouchableOpacity, Text} from 'react-native';
 import RNStartIoAds, {Types} from 'react-native-startio-ads';
 
 const Home = () => {
+  const [adLoaded, setAdLoaded] = useState(false);
+  
+  const loadInterstitial = async () => {
+    setAdLoaded(false);
+    await RNStartIoAds.loadInterstitial()
+      .then(result => {
+        if (result === Types.INTERSTITIAL_LOAD_SUCCESS) {
+          //RNStartIoAds.showInterstitial();
+          setAdLoaded(true);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
-	const [adLoaded, setAdLoaded] = useState(false);
+  const showInterstitial = async () => {
+    await RNStartIoAds.showInterstitial();
+    // Load can get call after show
+    loadInterstitial();
+  }
 
-	const loadInterstitial = async () => {
-		setAdLoaded(false);
-		await RNStartIoAds.loadInterstitial()
-			.then(result => {
-				if (result === Types.INTERSTITIAL_LOAD_SUCCESS) {
-					//RNStartIoAds.showInterstitial();
-					setAdLoaded(true);
-				}
-			})
-			.catch(error => {
-				console.log(error);
-			});
-	}
+  useEffect(() => {
+    loadInterstitial();
+  }, [])
 
-	const showInterstitial = async () => {
-		await RNStartIoAds.showInterstitial();
-		// Load can get call after show
-		loadInterstitial();
-	}
-
-	useEffect(() => {
-		loadInterstitial();
-	}, [])
-
-	return (
-		<TouchableOpacity onPress={() => {
-			if (adLoaded) {
-				showInterstitial();
-			}
-		}}>
-			<Text>Click to view the interstitial ad</Text>
-		</TouchableOpacity>
-	)
+  return (
+    <TouchableOpacity onPress={() => {
+      if (adLoaded) {
+        showInterstitial();
+      }
+    }}>
+      <Text>Click to view the interstitial ad</Text>
+    </TouchableOpacity>
+  )
 }
 
 export default Home;
@@ -154,33 +152,34 @@ import React, {useEffect} from 'react';
 import RNStartIoAds, {Types} from 'react-native-startio-ads';
 
 const Home = () => {
-
-	const loadAndShowRewarded = async () => {
-		await RNStartIoAds.loadRewarded()
-			.then(result => {
-				if (result === Types.REWARDED_LOAD_SUCCESS) {
-					RNStartIoAds.showRewarded();
-				}
-			})
-			.catch(error => {
-				console.log(error);
-			});
-	}
+  const loadAndShowRewarded = async () => {
+    await RNStartIoAds.loadRewarded()
+      .then(result => {
+        if (result === Types.REWARDED_LOAD_SUCCESS) {
+          RNStartIoAds.showRewarded();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 	
-	useEffect(() => {
-		loadAndShowRewarded();
+  useEffect(() => {
+    loadAndShowRewarded();
 
-		RNStartIoAds.addListener('rewarded', () => {
-      		console.log('foi premiado');
-    	});
+    RNStartIoAds.addListener('rewarded', () => {
+      console.log('foi premiado');
+    });
 
-		return () => {
-			RNStartIoAds.removeAllListeners();
-		}
-	}, []);
+    return () => {
+      RNStartIoAds.removeAllListeners();
+    }
+  }, []);
 
-	return <></>
+  return <></>
 }
 
 export default Home;
 ```
+
+### The Rewarded Ad can be loaded for viewing at a later time.
