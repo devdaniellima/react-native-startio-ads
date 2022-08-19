@@ -1,23 +1,21 @@
+require 'json'
+
+package = JSON.parse(File.read(File.join(__dir__, '../package.json')))
 
 Pod::Spec.new do |s|
   s.name         = "RNRnStartIo"
-  s.version      = "1.0.0"
-  s.summary      = "RNRnStartIo"
-#  s.description  = <<-DESC
-#                  RNRnStartIo
-#                   DESC
-  s.homepage     = "https://github.com/devdaniellima/react-native-startio-ads"
-  s.license      = "MIT"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "author" => "devdaniellima@gmail.com" }
+  s.version      = package['version']
+  s.summary      = package['description']
+  s.license      = package['license']
+  s.authors      = package['author']
+  s.homepage     = package['repository']['url']
+
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/devdaniellima/react-native-startio-ads.git", :tag => "master" }
-  s.source_files  = "RNRnStartIo/**/*.{h,m}"
-  s.requires_arc = true
-#
-#
+  
+  s.source_files  = "./*.{h,m}"
+
   s.dependency "React"
-  #s.dependency "others"
 end
 
   
