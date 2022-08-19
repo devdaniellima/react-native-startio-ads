@@ -1,9 +1,9 @@
 #import "RNRnStartIo.h"
 #import <React/RCTLog.h>
 
-@implementation RCTStartIoModules
+@implementation RnStartIoModules
 
-RCT_EXPORT_MODULE(RnStartIoModules);
+RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(initialize:
                   (NSString*)appId

@@ -1,7 +1,7 @@
 
 {
   "name": "react-native-startio-ads",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Library to support the integration of the Start.io ad SDK in react native apps.",
   "main": "index.js",
   "scripts": {
