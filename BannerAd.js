@@ -1,4 +1,3 @@
-import styles from 'components/ContainerGeneral/styles';
 import React from 'react'
 
 import { View, requireNativeComponent } from 'react-native';
@@ -15,7 +14,7 @@ const BannerAd = (props) => {
   
   return (
     <RnStartIoBannerXml 
-      style={{width: '100%', height: 50, ...styles}}
+      style={{width: '100%', height: 50, ...style}}
       onReceiveAd={onReceiveAd}
       onFailedToReceiveAd={onFailedToReceiveAd}
       onImpression={onImpression}
